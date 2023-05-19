@@ -5,7 +5,7 @@ const cors = require('cors')
 server.use(cors());
 require('dotenv').config();
 const axios = require('axios');
-const PORT = 3003;   //process.env.PORT || 3001;
+const PORT = process.env.PORT || 3003;
 const data = require(`./movieData/data.json`);
 const pg = require('pg');
 const apiKey = process.env.APIKey; //  To Run the code with my APIKey copy it from(./env.sample)
@@ -116,8 +116,8 @@ function updateMovieHandler(req, res) {
     const id = req.params.id;
     const upfavMovie = req.body;
     const sql = `UPDATE addMovie
-    SET comment = $1 WHERE id = ${id} RETURNING *;`;
-    const values = [upfavMovie.comment];
+    SET comments = $1 WHERE id = ${id} RETURNING *;`;
+    const values = [upfavMovie.comments];
     client.query(sql, values)
         .then(data => {
             const sql = `SELECT * FROM addMovie;`;
