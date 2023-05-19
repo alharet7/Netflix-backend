@@ -5,7 +5,7 @@ const cors = require('cors')
 server.use(cors());
 require('dotenv').config();
 const axios = require('axios');
-const PORT = process.env.PORT || 3003;
+const PORT =  process.env.PORT || 3007;
 const data = require(`./movieData/data.json`);
 const pg = require('pg');
 const apiKey = process.env.APIKey; //  To Run the code with my APIKey copy it from(./env.sample)
